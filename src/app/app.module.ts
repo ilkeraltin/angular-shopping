@@ -1,3 +1,4 @@
+import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,9 +17,9 @@ import { AdminProductsComponent } from './admin/components/admin-products/admin-
 import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 import { AdminAuthGuardService } from './admin/services/admin-auth-guard.service';
 import { AppComponent } from './app.component';
-import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { BsNavbarComponent } from './core/components/bs-navbar/bs-navbar.component';
+import { HomeComponent } from './core/components/home/home.component';
+import { LoginComponent } from './core/components/login/login.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { AuthService } from './shared/services/auth.service';
 import { CategoryService } from './shared/services/category.service';
@@ -35,14 +36,12 @@ import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    BsNavbarComponent,
-    HomeComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     SharedModule,
+    CoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
