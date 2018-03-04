@@ -1,3 +1,5 @@
+import { AppUser } from './../models/app-user';
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +7,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './bs-navbar.component.html',
   styleUrls: ['./bs-navbar.component.css']
 })
-export class BsNavbarComponent implements OnInit {
+export class BsNavbarComponent  {
+  appUser: AppUser;
+  isAdmin: boolean;
+  constructor(private auth: AuthService) {
+    auth.appUser$.subscribe(appUser => {
+      this.appUser = appUser;
+      this.isAdmin = appUser.isAdmin;
+    });
+  }
 
-  constructor() { }
-
-  ngOnInit() {
+  logout() {
+    this.auth.logout();
   }
 
 }

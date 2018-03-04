@@ -1,0 +1,15 @@
+<div class="card">
+    <img class="card-img-top" [src]="product.value.imageUrl" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{product.value.title}}</h5>
+      <p class="card-text">{{product.value.price | currency:'USD'}}</p>
+      
+    </div>
+    <div class="card-footer">
+        <button
+          (click)="addToCart(product)"
+          class="btn btn-primary btn-block"
+        >Add to cart</button>
+        <div>{{getQuantity()}}</div>
+    </div>
+</div>
